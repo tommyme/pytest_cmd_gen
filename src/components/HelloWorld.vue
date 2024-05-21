@@ -1,10 +1,5 @@
 <script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
-  }
-})
+import { ref, computed } from 'vue';
 </script>
 
 <template>
