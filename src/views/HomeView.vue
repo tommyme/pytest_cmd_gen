@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { Tree } from 'element-plus/es/components/tree-v2/src/types';
 import { ref } from 'vue'
 function parseModuleData(inputStr) {
   const moduleData = {};
@@ -45,8 +46,24 @@ const func = () => {
 const gen_cmd = () => {
   // console.log(value.value)
   let res = value.value.join(" ")
-  res = "pytest " + res + " --html index.html"
+  res = "pytest " + res + " --html=index.html"
   console.log(res)
+}
+const defaultProps = {
+  children: 'children',
+  label: 'label',
+}
+const handleNodeClick = (data: Tree) => {
+  console.log(data)
+}
+const mytree = ref()
+const handleCheckChange = (
+  data: Tree,
+  checked: boolean,
+  indeterminate: boolean
+) => {
+  console.log(data, checked, indeterminate)
+  console.log(mytree.value.getCheckedNodes(true))
 }
 </script>
 
@@ -58,6 +75,14 @@ const gen_cmd = () => {
     :rows="2"
     type="textarea"
     placeholder="please input pytest discovery"
+  />
+  <el-tree
+    ref="mytree"
+    :data="data"
+    :props="defaultProps"
+    @node-click="handleNodeClick"
+    show-checkbox
+    @check-change="handleCheckChange"
   />
   <el-tree-select
     v-model="value"
