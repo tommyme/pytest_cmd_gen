@@ -6,6 +6,7 @@ const router = createRouter({
   routes: [
     {path: '/',name: 'home',component: HomeView},
     {path: '/reg64',name: 'reg64',component: () => import("../views/Reg64View.vue")},
+    {path: '/editor',name: 'editor',component: () => import("../views/EditorView.vue")},
   ]
 })
 
