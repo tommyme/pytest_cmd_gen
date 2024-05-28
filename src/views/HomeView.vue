@@ -54,7 +54,7 @@ onMounted(() => {
   }
   if (Object.keys(store_obj).length) {
     // 有东西
-    tree_data.value = store_obj
+    tree_data.value = store_obj``
     // 弹框提示
   } else {
     return
